@@ -1,5 +1,5 @@
 function dailyEventMessage() {
-  var googleCalendarId = "Enter Calendar ID Here";
+  var googleCalendarId = "Enter Calendar ID";
   
   var calendar = CalendarApp.getCalendarById(googleCalendarId);
   var today = new Date();
@@ -17,7 +17,9 @@ function dailyEventMessage() {
   Logger.log(dailyEventList);
   
   var message = "";
-  
+  //var count = "วันนี้มีทั้งหมด " + dailyEventList.length + " หัวข้อ";
+message += "วันนี้มีทั้งหมด " + dailyEventList.length + " หัวข้อ";
+
   for (var i = 0; i < dailyEventList.length; i++) {
   
     var eventTitle = "หัวเรื่อง: " + " " + dailyEventList[i].getTitle();
@@ -38,21 +40,25 @@ function dailyEventMessage() {
 }
 
 function tomorrowEventMessage() {
-  var googleCalendarId = "Enter Calendar ID Here";
+  var googleCalendarId = "Enter Calendar ID";
   
   var calendar = CalendarApp.getCalendarById(googleCalendarId);
   var today = new Date();
+  today.setUTCHours(today.getUTCHours() + 11)
   var tomorrow = new Date(today.getFullYear(),today.getMonth(),today.getDate()+1);
   var tomorrowEventList = calendar.getEventsForDay(tomorrow);
   
+   Logger.log(tomorrow)
   //Logger.log(tomorrowEventList);
+
   
   var message = "ตารางงาน พรุ่งนี้";
   
   for (var i = 0; i < tomorrowEventList.length; i++) {
   
     var eventTitle = "หัวเรื่อง: " + " " + tomorrowEventList[i].getTitle();
-    var eventTime = "เวลา: " + " " + tomorrowEventList[i].getStartTime().toTimeString().slice(0,8);
+    //var eventTime = "เวลา: " + " " + tomorrowEventList[i].getStartTime().toTimeString().slice(0,8);
+    var eventTime = "เวลา: " + " " + tomorrowEventList[i].getStartTime().toLocaleString("th-TH", {timeZone: "Asia/Bangkok"});
     var eventDescription = "คำอธิบาย: " + " " + tomorrowEventList[i].getDescription();
     
     message += "\n" + eventTitle + "\n" + eventTime + "\n" + eventDescription;
@@ -70,7 +76,7 @@ function tomorrowEventMessage() {
 
 function sendMessage(message) {
   var lineNotifyEndPoint = "https://notify-api.line.me/api/notify";
-  var accessToken = "Enter Access Token Line Notify";
+  var accessToken = "Enter AccessToken Line Notify";
   var formData = {
     "message": message
   };
