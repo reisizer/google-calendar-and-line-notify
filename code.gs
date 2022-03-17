@@ -1,14 +1,18 @@
 function dailyEventMessage() {
-  var googleCalendarId = "google calendar id";
+  var googleCalendarId = "6411860009@mutacth.com";
   
   var calendar = CalendarApp.getCalendarById(googleCalendarId);
   var today = new Date();
   //var today2 = new Date().toLocaleString("en-US", {timeZone: "Asia/Bangkok"})
-  var today2 = new Date().toLocaleString("th-TH", {timeZone: "Asia/Bangkok"})
+  //var today2 = new Date().toLocaleString("th-TH", {timeZone: "Asia/Bangkok"})
+  //var today3 = new Date().toString().substr(25,6)+':00';;
+  //today.setUTCHours(22);
+  today.setUTCHours(today.getUTCHours() + 11)
   var dailyEventList = calendar.getEventsForDay(today);
 
-  //Logger.log(today)
+  Logger.log(today)
   //Logger.log(today2)
+  //Logger.log(today3)
 
   Logger.log(dailyEventList);
   
@@ -34,7 +38,7 @@ function dailyEventMessage() {
 }
 
 function tomorrowEventMessage() {
-  var googleCalendarId = "google calendar id";
+  var googleCalendarId = "6411860009@mutacth.com";
   
   var calendar = CalendarApp.getCalendarById(googleCalendarId);
   var today = new Date();
@@ -66,7 +70,7 @@ function tomorrowEventMessage() {
 
 function sendMessage(message) {
   var lineNotifyEndPoint = "https://notify-api.line.me/api/notify";
-  var accessToken = "line notify token";
+  var accessToken = "rYcz5XiojhGRgTP0797xbd0r0sTyz8FvMHTe87HJRhE";
   var formData = {
     "message": message
   };
