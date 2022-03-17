@@ -1,5 +1,5 @@
 function dailyEventMessage() {
-  var googleCalendarId = "6411860009@mutacth.com";
+  var googleCalendarId = "Enter Calendar ID Here";
   
   var calendar = CalendarApp.getCalendarById(googleCalendarId);
   var today = new Date();
@@ -38,7 +38,7 @@ function dailyEventMessage() {
 }
 
 function tomorrowEventMessage() {
-  var googleCalendarId = "6411860009@mutacth.com";
+  var googleCalendarId = "Enter Calendar ID Here";
   
   var calendar = CalendarApp.getCalendarById(googleCalendarId);
   var today = new Date();
@@ -70,7 +70,7 @@ function tomorrowEventMessage() {
 
 function sendMessage(message) {
   var lineNotifyEndPoint = "https://notify-api.line.me/api/notify";
-  var accessToken = "rYcz5XiojhGRgTP0797xbd0r0sTyz8FvMHTe87HJRhE";
+  var accessToken = "Enter Access Token Line Notify";
   var formData = {
     "message": message
   };
